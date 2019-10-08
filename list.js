@@ -1,21 +1,34 @@
-var todo = [];
-var input =  prompt("What would you like to do?");
+var todos = ["Tony(RaOne009) created this"];
+
+var input = prompt("What would you like to do?");
 while (input !== "quit") {
-    if (input === "list") {
-        todo.forEach(function(tod, index){
-            console.log("++++++++++++++++++");
-            console.log(index + " :" + tod);
-        })
-        console.log("++++++++++++++++++");
-    } else if (input === "new") {
-        var newtodo = prompt("Enter new todo");
-        todo.push(newtodo);
-        console.log("Todo is Added");
-    } else if (input === "delete") {
-        var ind = prompt("Enter the index of todo to delete");
-        todo.splice(ind, 1);
-        console.log("deleted todo");
-    }
-    input = prompt("What would you like to do?");
+	if (input === "list") {
+		printList();
+	} else if (input === "new") {
+		addTodo();
+	} else if (input === "delete") {
+		deleteTodo();
+	}
+	input = prompt("What would you like to do?");
 }
-console.log("Ok, You Quit the App");
+console.log("OK, YOU QUIT THE APP");
+
+function printList() {
+	console.log("+++++++++++++");
+	todos.forEach(function(todo, index){
+		console.log(index + ": " + todo);
+	});
+	console.log("+++++++++++++");
+}
+
+function addTodo() {
+	var newTodo = prompt("Enter new todo");
+	todos.push(newTodo);
+	console.log(newTodo + " added to list")
+}
+
+function deleteTodo() {
+	var index = prompt("Enter index of todo to delete");
+	todos.splice(index, 1);
+	console.log("Todo Removed")
+}
